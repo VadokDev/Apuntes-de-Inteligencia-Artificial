@@ -1,3 +1,6 @@
+const math = require('remark-math');
+const katex = require('rehype-katex');
+
 module.exports = {
   title: 'My Site',
   tagline: 'The tagline of my site',
@@ -8,6 +11,15 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
+  stylesheets: [
+     {
+       href: '/katex/katex.min.css',
+       type: 'text/css',
+       integrity:
+         'sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X',
+       crossorigin: 'anonymous',
+     },
+   ],
   themeConfig: {
     navbar: {
       title: 'My Site',
@@ -89,6 +101,8 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/facebook/docusaurus/edit/master/website/',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         blog: {
           showReadingTime: true,
